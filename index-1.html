@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="WebKarya Studio — jasa pembuatan website modern, responsif, dan profesional mulai Rp100.000.">
+  <title>WebKarya Studio — Website yang Membawa Bisnismu Lebih Jauh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-soft: #0a1728;
+      --panel: #0d1c30;
+      --panel-2: #10243d;
+      --text: #f4f8ff;
+      --muted: #9aacc3;
+      --line: rgba(164, 192, 226, .14);
+      --blue: #4388ff;
+      --blue-bright: #66a3ff;
+      --cyan: #62d5ff;
+      --radius: 22px;
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 80% 4%, rgba(35, 104, 211, .15), transparent 31rem),
+        radial-gradient(ellipse at 0% 44%, rgba(26, 78, 147, .09), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    .container { width: min(var(--max), calc(100% - 44px)); margin-inline: auto; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      color: #a8c9ff; font-size: .76rem; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--blue-bright); }
+    .section { padding: 104px 0; }
+    .section-head { max-width: 690px; margin-bottom: 42px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: "Manrope", sans-serif; letter-spacing: -.04em; }
+    h2 { font-size: clamp(2rem, 4.4vw, 3.35rem); line-height: 1.13; margin: 14px 0 16px; }
+    .section-head p, .muted { color: var(--muted); }
+    .gradient-text { color: #80b5ff; background: linear-gradient(100deg, #f7fbff 0%, #82b6ff 47%, #55d3ff 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(7, 17, 31, .78); backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(164, 192, 226, .09);
+    }
+    .nav { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-family: "Manrope", sans-serif; font-weight: 800; letter-spacing: -.04em; white-space: nowrap; }
+    .brand-mark {
+      width: 37px; height: 37px; display: grid; place-items: center; border-radius: 12px;
+      color: white; font-size: .98rem; font-weight: 800;
+      background: linear-gradient(140deg, #5ca2ff, #2364dc);
+      box-shadow: 0 8px 24px rgba(52, 126, 255, .25);
+    }
+    .brand span:last-child { font-size: 1rem; }
+    .brand small { display: block; color: #8298b4; font-family: "DM Sans", sans-serif; font-size: .61rem; letter-spacing: .16em; font-weight: 600; margin-top: -4px; }
+    .nav-links { display: flex; align-items: center; gap: 30px; color: #b8c6d9; font-size: .88rem; }
+    .nav-links a:hover { color: white; }
+    .nav-cta, .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 48px; padding: 0 19px; border-radius: 12px; font-size: .9rem; font-weight: 700;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .nav-cta, .btn-primary { color: white; background: linear-gradient(110deg, #3679f6, #2e65d9); box-shadow: 0 10px 30px rgba(40, 105, 230, .2); }
+    .nav-cta:hover, .btn:hover { transform: translateY(-2px); box-shadow: 0 13px 34px rgba(40, 105, 230, .28); }
+    .btn-secondary { color: #eaf3ff; border: 1px solid rgba(157, 190, 232, .25); background: rgba(255,255,255,.025); }
+    .btn-secondary:hover { background: rgba(255,255,255,.07); }
+    .menu-toggle { display: none; color: white; border: 1px solid var(--line); background: var(--panel); border-radius: 10px; width: 43px; height: 43px; cursor: pointer; }
+    .hero { padding: 83px 0 78px; position: relative; }
+    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: 55px; }
+    .hero-copy { position: relative; z-index: 2; }
+    .status-pill { display: inline-flex; align-items: center; gap: 9px; padding: 7px 12px; border: 1px solid rgba(107, 166, 255, .2); border-radius: 99px; background: rgba(48, 104, 183, .09); color: #bfd7ff; font-size: .78rem; margin-bottom: 24px; }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #67e8b5; box-shadow: 0 0 0 5px rgba(103, 232, 181, .1); }
+    .hero h1 { font-size: clamp(2.8rem, 5.4vw, 4.65rem); line-height: 1.04; margin: 0 0 24px; max-width: 680px; }
+    .hero-copy > p { max-width: 535px; color: #a7b7cd; font-size: 1.06rem; line-height: 1.85; margin-bottom: 29px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-note { display: flex; align-items: center; gap: 11px; margin-top: 25px; color: #8ea2bd; font-size: .8rem; }
+    .hero-note svg { flex: 0 0 auto; color: #73b5ff; }
+    .hero-visual { position: relative; min-width: 0; perspective: 1000px; }
+    .visual-glow { position: absolute; width: 75%; aspect-ratio: 1; right: 5%; top: 8%; background: #1d6ce8; filter: blur(100px); opacity: .2; border-radius: 50%; pointer-events: none; }
+    .browser {
+      position: relative; border-radius: 18px; overflow: hidden; background: #f8fbff;
+      box-shadow: 0 34px 100px rgba(0,0,0,.36), 0 0 0 1px rgba(169, 203, 255, .24);
+      transform: rotateY(-5deg) rotateX(2deg); animation: float 7s ease-in-out infinite;
+    }
+    .browser-top { height: 43px; background: #e9eff8; display: flex; align-items: center; padding: 0 14px; gap: 6px; }
+    .browser-dot { width: 8px; height: 8px; border-radius: 50%; background: #c2cedd; }
+    .address { height: 23px; border-radius: 6px; background: #f8fbff; color: #8b9bb1; font-size: .57rem; display: flex; align-items: center; justify-content: center; margin: 0 auto; width: 54%; }
+    .mock-site { min-height: 355px; padding: 24px 24px 20px; color: #10213b; background: linear-gradient(140deg, #fff, #edf5ff); }
+    .mock-nav { display: flex; justify-content: space-between; align-items: center; font-size: .59rem; font-weight: 800; }
+    .mock-logo { display: flex; align-items: center; gap: 6px; }
+    .mock-logo-icon { width: 19px; height: 19px; display: grid; place-items: center; border-radius: 6px; color: white; background: #3279f4; font-size: .55rem; }
+    .mock-nav-links { display: flex; gap: 13px; color: #73839a; font-weight: 600; }
+    .mock-hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 12px; align-items: center; padding-top: 38px; }
+    .mock-kicker { color: #3678e7; text-transform: uppercase; font-size: .49rem; font-weight: 800; letter-spacing: .13em; }
+    .mock-title { font-family: "Manrope", sans-serif; font-size: clamp(1.3rem, 2.6vw, 2rem); font-weight: 800; line-height: 1.08; letter-spacing: -.06em; margin: 9px 0 12px; }
+    .mock-copy { color: #7d8ba0; font-size: .58rem; line-height: 1.65; margin-bottom: 13px; }
+    .mock-button { display: inline-flex; background: #3479f4; color: white; border-radius: 5px; padding: 7px 10px; font-size: .52rem; font-weight: 700; }
+    .mock-art { position: relative; height: 170px; display: grid; place-items: center; }
+    .art-ring { width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #d7eaff, #8dbdff); display: grid; place-items: center; }
+    .art-card { width: 105px; height: 126px; border-radius: 13px; background: linear-gradient(150deg, #193c71, #0b1a32); box-shadow: 0 15px 28px rgba(25, 59, 111, .24); transform: rotate(7deg); padding: 12px; }
+    .art-card-top { height: 5px; width: 34px; background: #80c9ff; border-radius: 8px; margin-bottom: 12px; }
+    .art-line { height: 4px; background: rgba(255,255,255,.25); border-radius: 8px; margin: 7px 0; }
+    .art-line.short { width: 58%; }
+    .art-chart { height: 38px; display: flex; align-items: end; gap: 5px; margin-top: 14px; }
+    .art-chart span { flex: 1; border-radius: 3px 3px 0 0; background: linear-gradient(#67d5ff, #3479f4); }
+    .art-chart span:nth-child(1) { height: 42%; } .art-chart span:nth-child(2) { height: 68%; } .art-chart span:nth-child(3) { height: 52%; } .art-chart span:nth-child(4) { height: 90%; } .art-chart span:nth-child(5) { height: 76%; }
+    .float-card { position: absolute; z-index: 3; border: 1px solid rgba(177, 206, 246, .19); border-radius: 13px; background: rgba(13, 29, 49, .92); box-shadow: 0 15px 45px rgba(0,0,0,.24); backdrop-filter: blur(12px); }
+    .float-price { left: -26px; bottom: 35px; padding: 14px 17px; animation: bob 5s ease-in-out infinite; }
+    .float-price small { display: block; color: #9db0ca; font-size: .68rem; }
+    .float-price strong { display: block; font-family: "Manrope", sans-serif; font-size: 1.2rem; margin-top: 2px; }
+    .float-check { right: -15px; top: 45px; padding: 12px 15px; display: flex; align-items: center; gap: 9px; animation: bob 5s ease-in-out infinite reverse; }
+    .check-icon { width: 28px; height: 28px; border-radius: 9px; display: grid; place-items: center; background: rgba(79, 214, 164, .12); color: #62e2b2; font-weight: 800; }
+    .float-check span:last-child { font-size: .7rem; font-weight: 700; }
+    .trust-strip { border-block: 1px solid var(--line); background: rgba(255,255,255,.015); }
+    .trust-inner { min-height: 83px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .trust-label { color: #758ba7; font-size: .78rem; max-width: 170px; }
+    .trust-item { display: flex; align-items: center; gap: 10px; color: #c7d4e6; font-size: .86rem; font-weight: 600; }
+    .trust-item svg { color: #6da9ff; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .service-card { padding: 27px; border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(150deg, rgba(18, 39, 64, .75), rgba(10, 23, 40, .76)); transition: transform .25s, border-color .25s; }
+    .service-card:hover { transform: translateY(-5px); border-color: rgba(93, 155, 255, .42); }
+    .icon-box { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; color: #7fb6ff; background: rgba(57, 124, 235, .12); border: 1px solid rgba(94, 157, 255, .18); margin-bottom: 22px; }
+    .service-card h3 { font-size: 1.12rem; margin-bottom: 9px; }
+    .service-card p { color: var(--muted); font-size: .9rem; margin-bottom: 0; }
+    .portfolio-section { background: linear-gradient(180deg, transparent, rgba(15, 35, 59, .35), transparent); }
+    .portfolio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .project { overflow: hidden; border-radius: 20px; border: 1px solid var(--line); background: #0b192b; }
+    .project-preview { min-height: 255px; padding: 19px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .preview-shop { background: linear-gradient(135deg, #eaf3ff, #c4dcff); }
+    .preview-food { background: linear-gradient(135deg, #fff0df, #f9c997); }
+    .mini-window { width: 100%; max-width: 440px; background: white; border-radius: 10px; box-shadow: 0 18px 38px rgba(18, 42, 78, .2); overflow: hidden; color: #15233a; }
+    .mini-bar { height: 22px; background: #e8edf4; display: flex; align-items: center; gap: 4px; padding: 0 9px; }
+    .mini-bar i { width: 5px; height: 5px; border-radius: 50%; background: #b9c4d2; }
+    .mini-content { padding: 18px; }
+    .mini-nav { display: flex; align-items: center; justify-content: space-between; font-size: .55rem; font-weight: 800; }
+    .mini-nav span:last-child { color: #8090a6; font-size: .47rem; }
+    .shop-body { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; align-items: center; padding-top: 18px; }
+    .shop-title { font-family: "Manrope", sans-serif; font-size: 1.1rem; line-height: 1.1; font-weight: 800; letter-spacing: -.05em; }
+    .mini-text { font-size: .49rem; color: #7b899d; line-height: 1.6; margin: 8px 0 10px; }
+    .mini-cta { display: inline-block; background: #2d6fe5; color: white; border-radius: 4px; padding: 6px 9px; font-size: .47rem; font-weight: 700; }
+    .product-shapes { height: 126px; display: flex; align-items: center; justify-content: center; gap: 9px; background: #edf4ff; border-radius: 8px; }
+    .product-shapes span { display: block; width: 45px; height: 75px; border-radius: 7px 7px 12px 12px; background: linear-gradient(150deg, #7ab7ff, #2457ad); box-shadow: 0 8px 14px #c4d8f5; }
+    .product-shapes span:nth-child(2) { height: 92px; background: linear-gradient(150deg, #d5e7ff, #5d8fd7); }
+    .food-content { background: #fffaf4; }
+    .food-content .mini-nav { color: #4a2a1c; }
+    .food-content .mini-cta { background: #b34d28; }
+    .food-body { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 12px; padding-top: 19px; }
+    .food-title { font-family: "Manrope", sans-serif; font-weight: 800; line-height: 1.05; font-size: 1.15rem; color: #4a2a1c; }
+    .food-plate { height: 125px; border-radius: 50%; background: #f5d5a9; display: grid; place-items: center; font-size: 3.5rem; box-shadow: inset 0 0 0 9px rgba(255,255,255,.48); }
+    .project-info { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 20px 20px; }
+    .project-info h3 { font-size: 1rem; margin: 0 0 4px; letter-spacing: -.02em; }
+    .project-info p { color: var(--muted); font-size: .8rem; margin: 0; }
+    .concept-tag { flex: 0 0 auto; border: 1px solid rgba(110, 164, 255, .2); color: #a7cbff; border-radius: 99px; padding: 5px 9px; font-size: .65rem; }
+    .pricing-wrap { display: grid; grid-template-columns: .95fr 1.05fr; gap: 50px; align-items: center; }
+    .pricing-copy p { color: var(--muted); max-width: 440px; }
+    .pricing-card { position: relative; overflow: hidden; border-radius: 24px; padding: 32px; background: linear-gradient(150deg, #112b49, #0c1b2e 75%); border: 1px solid rgba(93, 157, 255, .35); box-shadow: 0 25px 70px rgba(0,0,0,.2); }
+    .pricing-card::before { content: ""; position: absolute; width: 220px; height: 220px; top: -130px; right: -50px; border-radius: 50%; background: #3479f4; filter: blur(90px); opacity: .24; }
+    .pricing-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; position: relative; }
+    .pricing-label { color: #b5d3ff; font-size: .76rem; font-weight: 800; letter-spacing: .12em; }
+    .pricing-badge { padding: 5px 9px; border-radius: 99px; color: #b6f5df; background: rgba(65, 207, 157, .1); font-size: .67rem; }
+    .price { font-family: "Manrope", sans-serif; font-weight: 800; font-size: clamp(2.5rem, 5vw, 3.5rem); letter-spacing: -.06em; line-height: 1.2; margin: 17px 0 9px; position: relative; }
+    .price small { font-family: "DM Sans", sans-serif; font-size: .84rem; font-weight: 500; letter-spacing: 0; color: #91a8c6; }
+    .price-desc { color: #a7b8ce; font-size: .9rem; margin-bottom: 22px; }
+    .features { list-style: none; margin: 0 0 26px; padding: 0; display: grid; gap: 13px; }
+    .features li { display: flex; align-items: flex-start; gap: 10px; color: #d6e2f2; font-size: .88rem; }
+    .features svg { color: #67dfb2; flex: 0 0 auto; margin-top: 3px; }
+    .pricing-card .btn { width: 100%; }
+    .pricing-footnote { color: #8299b5; font-size: .72rem; margin: 14px 0 0; text-align: center; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; counter-reset: step; }
+    .step { border-top: 1px solid rgba(118, 166, 229, .3); padding-top: 22px; counter-increment: step; }
+    .step-number { color: #6da9ff; font-size: .75rem; font-weight: 800; letter-spacing: .12em; }
+    .step h3 { font-size: 1.15rem; margin: 11px 0 8px; }
+    .step p { color: var(--muted); font-size: .88rem; margin: 0; }
+    .contact-panel { position: relative; overflow: hidden; padding: 52px; border-radius: 26px; border: 1px solid rgba(112, 167, 255, .25); background: radial-gradient(ellipse at 95% 5%, rgba(56, 124, 245, .2), transparent 40%), linear-gradient(130deg, #10243d, #0b192b); display: flex; justify-content: space-between; align-items: center; gap: 32px; }
+    .contact-panel h2 { max-width: 620px; margin-bottom: 13px; }
+    .contact-panel p { color: #a7b9d0; margin: 0; max-width: 560px; }
+    .contact-actions { display: flex; flex-direction: column; gap: 11px; flex: 0 0 auto; }
+    .footer { padding: 28px 0; border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; color: #7f93ad; font-size: .78rem; }
+    .footer-links { display: flex; gap: 19px; }
+    .footer-links a:hover { color: white; }
+    .wa-float { position: fixed; right: 22px; bottom: 22px; z-index: 15; width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; color: white; background: #20b878; box-shadow: 0 10px 30px rgba(18, 184, 118, .3); transition: transform .2s; }
+    .wa-float:hover { transform: translateY(-3px) scale(1.04); }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes float { 0%, 100% { transform: rotateY(-5deg) rotateX(2deg) translateY(0); } 50% { transform: rotateY(-2deg) rotateX(1deg) translateY(-8px); } }
+    @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; } .reveal { opacity: 1; transform: none; } }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+      .hero-copy { max-width: 760px; }
+      .hero-visual { width: min(100%, 650px); margin-inline: auto; }
+      .browser { transform: none; }
+      .float-price { left: -12px; }
+      .float-check { right: -10px; }
+      .trust-inner { flex-wrap: wrap; justify-content: center; padding: 20px 0; }
+      .trust-label { max-width: none; width: 100%; text-align: center; }
+      .pricing-wrap { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .contact-panel { padding: 38px; }
+    }
+    @media (max-width: 680px) {
+      .container { width: min(100% - 32px, var(--max)); }
+      .nav { height: 68px; }
+      .menu-toggle { display: grid; place-items: center; }
+      .nav-cta { display: none; }
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; padding: 18px 20px 22px; background: rgba(7,17,31,.98); border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 0; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 4px; }
+      .hero { padding: 58px 0 56px; }
+      .hero-grid { gap: 45px; }
+      .hero h1 { font-size: clamp(2.55rem, 12vw, 3.7rem); }
+      .hero-copy > p { font-size: .98rem; }
+      .hero-actions { display: grid; grid-template-columns: 1fr; }
+      .hero-actions .btn { width: 100%; }
+      .mock-site { padding: 18px 15px 16px; min-height: 285px; }
+      .mock-hero { padding-top: 28px; gap: 5px; }
+      .mock-title { font-size: clamp(1.15rem, 6vw, 1.6rem); }
+      .mock-art { height: 135px; }
+      .art-ring { width: 112px; height: 112px; }
+      .art-card { width: 82px; height: 102px; padding: 9px; }
+      .art-chart { height: 28px; }
+      .mock-nav-links { gap: 7px; font-size: .48rem; }
+      .float-price { left: -4px; bottom: -20px; padding: 10px 12px; }
+      .float-price strong { font-size: 1rem; }
+      .float-check { right: -4px; top: -18px; padding: 9px 10px; }
+      .section { padding: 74px 0; }
+      .cards, .portfolio-grid, .pricing-wrap, .steps { grid-template-columns: 1fr; }
+      .cards { gap: 12px; }
+      .service-card { padding: 23px; }
+      .portfolio-grid { gap: 16px; }
+      .project-preview { min-height: 220px; padding: 13px; }
+      .project-info { padding: 15px; }
+      .pricing-wrap { gap: 25px; }
+      .pricing-card { padding: 25px; }
+      .contact-panel { padding: 30px 23px; flex-direction: column; align-items: stretch; }
+      .contact-actions { width: 100%; }
+      .contact-actions .btn { width: 100%; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .trust-item { font-size: .75rem; gap: 6px; }
+      .trust-item svg { width: 17px; }
+      .wa-float { width: 49px; height: 49px; right: 15px; bottom: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#beranda" aria-label="WebKarya Studio, beranda">
+        <span class="brand-mark">W.</span>
+        <span>WebKarya <small>STUDIO DIGITAL</small></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Navigasi utama">
+        <a href="#layanan">Layanan</a>
+        <a href="#portofolio">Portofolio</a>
+        <a href="#harga">Harga</a>
+        <a href="#proses">Proses</a>
+      </nav>
+      <a class="nav-cta" href="https://wa.me/6289526542128?text=Halo%20WebKarya%20Studio%2C%20saya%20ingin%20bertanya%20tentang%20jasa%20pembuatan%20website." target="_blank" rel="noopener noreferrer">Konsultasi gratis <span aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="navLinks">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="beranda">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="status-pill"><span class="status-dot"></span> Website profesional, mulai Rp100 ribu</div>
+          <h1>Bisnismu layak punya website <span class="gradient-text">yang berkesan.</span></h1>
+          <p>Kami membantu mengubah ide menjadi website yang modern, nyaman dibuka di HP, dan dirancang untuk membuat bisnismu terlihat lebih terpercaya.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://wa.me/6289526542128?text=Halo%20WebKarya%20Studio%2C%20saya%20tertarik%20membuat%20website." target="_blank" rel="noopener noreferrer">Mulai proyekmu <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-secondary" href="#portofolio">Lihat contoh desain <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></svg>
+            Desain responsif · Komunikasi jelas · Sesuai kebutuhan
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Ilustrasi tampilan website modern">
+          <div class="visual-glow"></div>
+          <div class="browser">
+            <div class="browser-top"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span><div class="address">webkarya.studio / preview</div></div>
+            <div class="mock-site">
+              <div class="mock-nav">
+                <div class="mock-logo"><span class="mock-logo-icon">W.</span> YOUR BRAND</div>
+                <div class="mock-nav-links"><span>Beranda</span><span>Layanan</span><span>Kontak</span></div>
+              </div>
+              <div class="mock-hero">
+                <div>
+                  <div class="mock-kicker">DIGITAL EXPERIENCE</div>
+                  <div class="mock-title">Make your<br>brand stand out.</div>
+                  <p class="mock-copy">Tampilan bersih. Pesan yang jelas. Pengalaman digital yang terasa berbeda.</p>
+                  <span class="mock-button">Jelajahi lebih lanjut ↗</span>
+                </div>
+                <div class="mock-art">
+                  <div class="art-ring">
+                    <div class="art-card">
+                      <div class="art-card-top"></div><div class="art-line"></div><div class="art-line short"></div>
+                      <div class="art-chart"><span></span><span></span><span></span><span></span><span></span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="float-card float-price"><small>Investasi mulai</small><strong>Rp100.000</strong></div>
+          <div class="float-card float-check"><span class="check-icon">✓</span><span>Mobile friendly</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-strip">
+      <div class="container trust-inner">
+        <div class="trust-label">Dibuat untuk kebutuhan digital masa kini</div>
+        <div class="trust-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 18h6"/></svg> Responsif di HP</div>
+        <div class="trust-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg> Desain modern</div>
+        <div class="trust-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v14H4z"/><path d="m4 7 8 6 8-6"/></svg> Kontak mudah</div>
+      </div>
+    </div>
+
+    <section class="section" id="layanan">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Apa yang kami kerjakan</span>
+          <h2>Semua dimulai dari <span class="gradient-text">tampilan yang tepat.</span></h2>
+          <p>Website yang baik bukan hanya terlihat bagus. Pengunjung juga harus mudah memahami bisnismu dan tahu langkah berikutnya.</p>
+        </div>
+        <div class="cards">
+          <article class="service-card reveal">
+            <div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 6.5h.01M6 6.5h.01"/></svg></div>
+            <h3>Website bisnis</h3>
+            <p>Perkenalkan layanan, keunggulan, dan informasi bisnismu dalam satu halaman yang rapi dan meyakinkan.</p>
+          </article>
+          <article class="service-card reveal">
+            <div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h5M8 16h8"/></svg></div>
+            <h3>Landing page</h3>
+            <p>Halaman promosi yang fokus pada satu tujuan, seperti memperkenalkan produk atau mengajak pelanggan menghubungi kamu.</p>
+          </article>
+          <article class="service-card reveal">
+            <div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M5 20V8l7-4 7 4v12"/><path d="M9 20v-6h6v6M8 10h.01M16 10h.01"/></svg></div>
+            <h3>Website UMKM</h3>
+            <p>Tampilkan menu, katalog, jam operasional, dan tombol WhatsApp supaya calon pelanggan lebih mudah menemukanmu.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section portfolio-section" id="portofolio">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Eksplorasi desain</span>
+          <h2>Contoh tampilan, <span class="gradient-text">bukan sekadar janji.</span></h2>
+          <p>Berikut konsep visual untuk menunjukkan arah desain yang bisa disesuaikan dengan karakter bisnis kamu.</p>
+        </div>
+        <div class="portfolio-grid">
+          <article class="project reveal">
+            <div class="project-preview preview-shop">
+              <div class="mini-window">
+                <div class="mini-bar"><i></i><i></i><i></i></div>
+                <div class="mini-content">
+                  <div class="mini-nav"><span>MONO GOODS</span><span>KOLEKSI &nbsp; TENTANG &nbsp; KONTAK</span></div>
+                  <div class="shop-body">
+                    <div><div class="shop-title">Simple things.<br>Better living.</div><p class="mini-text">Temukan pilihan produk dengan desain sederhana untuk keseharianmu.</p><span class="mini-cta">Lihat koleksi ↗</span></div>
+                    <div class="product-shapes"><span></span><span></span><span></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-info"><div><h3>Mono Goods</h3><p>Konsep website katalog produk</p></div><span class="concept-tag">Konsep desain</span></div>
+          </article>
+          <article class="project reveal">
+            <div class="project-preview preview-food">
+              <div class="mini-window">
+                <div class="mini-bar"><i></i><i></i><i></i></div>
+                <div class="mini-content food-content">
+                  <div class="mini-nav"><span>RASA RUMAH</span><span>MENU &nbsp; CERITA &nbsp; PESAN</span></div>
+                  <div class="food-body">
+                    <div><div class="food-title">Hangatnya<br>rasa rumahan.</div><p class="mini-text">Menu favorit dibuat dengan rasa yang selalu bikin rindu.</p><span class="mini-cta">Lihat menu ↗</span></div>
+                    <div class="food-plate">🍜</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-info"><div><h3>Rasa Rumah</h3><p>Konsep website kuliner</p></div><span class="concept-tag">Konsep desain</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="harga">
+      <div class="container pricing-wrap">
+        <div class="pricing-copy reveal">
+          <span class="eyebrow">Harga transparan</span>
+          <h2>Mulai online tanpa <span class="gradient-text">biaya berlebihan.</span></h2>
+          <p>Cocok untuk kamu yang ingin mulai membangun kehadiran online. Ceritakan kebutuhanmu terlebih dahulu agar ruang lingkup pekerjaan dan biaya tambahan, jika ada, jelas dari awal.</p>
+          <div class="hero-note"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></svg> Tidak ada biaya tersembunyi yang disengaja.</div>
+        </div>
+        <div class="pricing-card reveal">
+          <div class="pricing-top"><span class="pricing-label">PAKET STARTER</span><span class="pricing-badge">Mulai di sini</span></div>
+          <div class="price">Rp100.000 <small>/ proyek</small></div>
+          <p class="price-desc">Website sederhana dengan tampilan profesional untuk memperkenalkan bisnis atau layananmu.</p>
+          <ul class="features">
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg> Satu halaman website</li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg> Tampilan responsif untuk HP</li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg> Informasi layanan dan kontak</li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg> Tombol WhatsApp yang bisa diklik</li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg> Bantuan publikasi di GitHub Pages</li>
+          </ul>
+          <a class="btn btn-primary" href="https://wa.me/6289526542128?text=Halo%20WebKarya%20Studio%2C%20saya%20ingin%20memesan%20Paket%20Starter%20Rp100.000." target="_blank" rel="noopener noreferrer">Pesan paket starter <span aria-hidden="true">↗</span></a>
+          <p class="pricing-footnote">Domain berbayar, hosting berbayar, dan fitur tambahan tidak termasuk kecuali disepakati.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proses">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Cara kerja</span>
+          <h2>Proses sederhana, <span class="gradient-text">dari ide ke online.</span></h2>
+          <p>Kamu akan tahu apa yang perlu disiapkan dan langkah apa yang dilakukan selanjutnya.</p>
+        </div>
+        <div class="steps">
+          <article class="step reveal"><span class="step-number">01 / DISKUSI</span><h3>Ceritakan kebutuhanmu</h3><p>Kirim jenis usaha, tujuan website, referensi desain, dan konten yang sudah kamu punya.</p></article>
+          <article class="step reveal"><span class="step-number">02 / DESAIN</span><h3>Susun tampilan</h3><p>Struktur dan visual dibuat sesuai kebutuhan yang telah disepakati sebelum tahap penyelesaian.</p></article>
+          <article class="step reveal"><span class="step-number">03 / PUBLIKASI</span><h3>Siap dikunjungi</h3><p>Website disiapkan untuk dipublikasikan. Jika memakai GitHub Pages, kamu bisa membagikan tautannya kepada pelanggan.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kontak">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div>
+            <span class="eyebrow">Mari mulai</span>
+            <h2>Punya ide? <span class="gradient-text">Kami siap mendengarkan.</span></h2>
+            <p>Hubungi WebKarya Studio untuk membicarakan website yang kamu butuhkan. Mulai dari pertanyaan sederhana juga boleh.</p>
+          </div>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="https://wa.me/6289526542128?text=Halo%20WebKarya%20Studio%2C%20saya%20ingin%20konsultasi%20website." target="_blank" rel="noopener noreferrer">Chat WhatsApp ↗</a>
+            <a class="btn btn-secondary" href="mailto:rasyahermawan1234@gimail.com">Kirim email ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a class="brand" href="#beranda"><span class="brand-mark">W.</span><span>WebKarya <small>STUDIO DIGITAL</small></span></a>
+      <span>© <span id="year"></span> WebKarya Studio. Dibuat dengan perhatian pada detail.</span>
+      <div class="footer-links"><a href="#layanan">Layanan</a><a href="#harga">Harga</a><a href="#kontak">Kontak</a></div>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/6289526542128?text=Halo%20WebKarya%20Studio!" target="_blank" rel="noopener noreferrer" aria-label="Hubungi WebKarya Studio melalui WhatsApp">
+    <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20l1.2-5.3A8.4 8.4 0 1 1 21 11.5Z"/><path d="M8.5 8.5c.4 2.2 2.8 4.6 5 5l1.2-1.2 2 .9c-.2 1.2-1.2 2-2.5 2-3.4-.3-6.8-3.7-7.1-7.1 0-1.3.8-2.3 2-2.5l.9 2-1.5.9Z"/></svg>
+  </a>
+
+  <script>
+    // Tahun otomatis di footer.
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Menu navigasi untuk layar kecil.
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Tutup menu navigasi" : "Buka menu navigasi");
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Buka menu navigasi");
+      });
+    });
+
+    // Animasi masuk saat bagian halaman terlihat.
+    const revealItems = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries, currentObserver) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            currentObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach((item) => observer.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add("visible"));
+    }
+  </script>
+</body>
+</html>
